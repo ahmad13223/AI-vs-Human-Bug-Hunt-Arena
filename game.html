@@ -1,0 +1,392 @@
+{% extends "base.html" %}
+
+{% block title %}Bug Hunt Arena - AI vs Human Competition{% endblock %}
+
+{% block content %}
+<section class="py-12 min-h-screen bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Game Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-5xl font-bold text-gray-800 mb-4">🏆 Bug Hunt Arena</h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Find bugs faster than AI! Choose your difficulty level and race against time to fix the code before the AI does.
+            </p>
+        </div>
+
+        <!-- Level Selection -->
+        <div id="levelSelection" class="mb-8">
+            <div class="bg-white rounded-2xl shadow-lg p-8 border-2 border-gray-100">
+                <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Choose Your Challenge Level</h2>
+                
+                <div class="grid md:grid-cols-3 gap-6">
+                    <!-- Easy Level -->
+                    <div class="level-card bg-green-50 border-2 border-green-200 rounded-xl p-6 cursor-pointer hover:border-green-400 transition-all duration-300" data-level="easy">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <span class="text-2xl">😊</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-green-700 mb-2">Easy</h3>
+                            <p class="text-green-600 mb-4">Simple bugs like null checks and basic logic errors</p>
+                            <div class="bg-green-100 rounded-lg p-3 text-sm text-green-700">
+                                <div class="text-center">
+                                    <div class="font-bold text-lg mb-1">⚡ Speed Challenge</div>
+                                    <div>Who finishes first, wins!</div>
+                                    <div class="text-xs mt-1 opacity-75">Race against AI to find the bug</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Medium Level -->
+                    <div class="level-card bg-yellow-50 border-2 border-yellow-200 rounded-xl p-6 cursor-pointer hover:border-yellow-400 transition-all duration-300" data-level="medium">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <span class="text-2xl">🤔</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-yellow-700 mb-2">Medium</h3>
+                            <p class="text-yellow-600 mb-4">Algorithm bugs and off-by-one errors</p>
+                            <div class="bg-yellow-100 rounded-lg p-3 text-sm text-yellow-700">
+                                <div class="text-center">
+                                    <div class="font-bold text-lg mb-1">🏃 Speed Race</div>
+                                    <div>Who finishes first, wins!</div>
+                                    <div class="text-xs mt-1 opacity-75">Beat the AI to victory</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hard Level -->
+                    <div class="level-card bg-red-50 border-2 border-red-200 rounded-xl p-6 cursor-pointer hover:border-red-400 transition-all duration-300" data-level="hard">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <span class="text-2xl">😤</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-red-700 mb-2">Hard</h3>
+                            <p class="text-red-600 mb-4">Complex concurrency and performance issues</p>
+                            <div class="bg-red-100 rounded-lg p-3 text-sm text-red-700">
+                                <div class="text-center">
+                                    <div class="font-bold text-lg mb-1">🚀 Ultimate Race</div>
+                                    <div>Who finishes first, wins!</div>
+                                    <div class="text-xs mt-1 opacity-75">Can you outsmart the AI?</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-8">
+                    <div class="mb-4">
+                        <label for="languageSelect" class="block text-lg font-semibold text-gray-700 mb-2">Programming Language:</label>
+                        <select id="languageSelect" class="px-4 py-2 border-2 border-gray-300 rounded-lg text-lg">
+                            <option value="python">🐍 Python</option>
+                            <option value="javascript">⚡ JavaScript</option>
+                            <option value="java">☕ Java</option>
+                        </select>
+                    </div>
+                    <button id="startGameBtn" class="bg-blue-600 text-white px-8 py-3 rounded-xl font-bold text-lg hover:bg-blue-700 transition-colors disabled:opacity-50" disabled>
+                        Select a Level to Start
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Area -->
+        <div id="gameArea" class="hidden">
+            <!-- Challenge Info -->
+            <div class="bg-white rounded-2xl shadow-lg p-6 mb-6 border-2 border-blue-200">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-2xl font-bold text-gray-800">🐛 Bug Hunt Challenge</h2>
+                    <div class="flex items-center space-x-4">
+                        <span id="levelBadge" class="px-3 py-1 rounded-full text-sm font-bold"></span>
+                        <div id="progressBar" class="w-32 h-2 bg-gray-200 rounded-full overflow-hidden">
+                            <div id="progressFill" class="h-full bg-blue-500 transition-all duration-1000"></div>
+                        </div>
+                    </div>
+                </div>
+                <p id="challengeDescription" class="text-lg text-gray-600 mb-4"></p>
+            </div>
+
+            <!-- Code Editor -->
+            <div class="bg-white rounded-2xl shadow-lg p-6 mb-6">
+                <h3 class="text-xl font-bold text-gray-800 mb-4">🔍 Find and Fix the Bug:</h3>
+                <div class="bg-gray-900 rounded-lg p-4 mb-4">
+                    <pre><code id="buggyCode" class="language-python text-sm text-white"></code></pre>
+                </div>
+                
+                <div class="mb-4">
+                    <label for="userCode" class="block text-lg font-semibold text-gray-700 mb-2">Your Fixed Code:</label>
+                    <textarea 
+                        id="userCode" 
+                        rows="15" 
+                        class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg font-mono text-sm"
+                        placeholder="Paste the corrected code here..."
+                    ></textarea>
+                </div>
+
+                <div class="text-center">
+                    <button id="submitBtn" class="bg-green-600 text-white px-8 py-3 rounded-xl font-bold text-lg hover:bg-green-700 transition-colors">
+                        🚀 Submit Fix
+                    </button>
+                    <button id="giveUpBtn" class="bg-gray-500 text-white px-6 py-3 rounded-xl font-semibold text-lg hover:bg-gray-600 transition-colors ml-4">
+                        Give Up
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Modal -->
+        <div id="resultsModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50 p-4">
+            <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] flex flex-col">
+                <!-- Modal Content - Scrollable -->
+                <div class="flex-1 overflow-y-auto p-8">
+                    <div id="resultContent" class="text-center">
+                        <!-- Results will be populated here -->
+                    </div>
+                </div>
+                <!-- Fixed Buttons at Bottom -->
+                <div class="flex justify-center space-x-4 p-6 border-t bg-gray-50 rounded-b-2xl">
+                    <button id="playAgainBtn" class="bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-blue-700 transition-colors">
+                        Play Again
+                    </button>
+                    <button id="closeResultsBtn" class="bg-gray-500 text-white px-6 py-3 rounded-xl font-semibold hover:bg-gray-600 transition-colors">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+let gameState = {
+    selectedLevel: null,
+    selectedLanguage: 'python',
+    startTime: null,
+    challenge: null,
+    gameTimer: null
+};
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Level selection
+    document.querySelectorAll('.level-card').forEach(card => {
+        card.addEventListener('click', function() {
+            // Remove previous selection
+            document.querySelectorAll('.level-card').forEach(c => c.classList.remove('ring-4', 'ring-blue-400'));
+            
+            // Add selection to clicked card
+            this.classList.add('ring-4', 'ring-blue-400');
+            
+            gameState.selectedLevel = this.dataset.level;
+            document.getElementById('startGameBtn').disabled = false;
+            document.getElementById('startGameBtn').textContent = `Start ${gameState.selectedLevel.charAt(0).toUpperCase() + gameState.selectedLevel.slice(1)} Challenge`;
+        });
+    });
+
+    // Language selection
+    document.getElementById('languageSelect').addEventListener('change', function() {
+        gameState.selectedLanguage = this.value;
+    });
+
+    // Start game
+    document.getElementById('startGameBtn').addEventListener('click', startGame);
+    
+    // Submit fix
+    document.getElementById('submitBtn').addEventListener('click', submitFix);
+    
+    // Give up
+    document.getElementById('giveUpBtn').addEventListener('click', giveUp);
+    
+    // Play again
+    document.getElementById('playAgainBtn').addEventListener('click', resetGame);
+    
+    // Close results
+    document.getElementById('closeResultsBtn').addEventListener('click', function() {
+        document.getElementById('resultsModal').classList.add('hidden');
+    });
+});
+
+async function startGame() {
+    try {
+        const response = await fetch('/get-challenge', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                level: gameState.selectedLevel,
+                language: gameState.selectedLanguage
+            })
+        });
+        
+        const challenge = await response.json();
+        gameState.challenge = challenge;
+        
+        // Hide level selection and show game area
+        document.getElementById('levelSelection').classList.add('hidden');
+        document.getElementById('gameArea').classList.remove('hidden');
+        
+        // Populate challenge info
+        document.getElementById('challengeDescription').textContent = challenge.description;
+        document.getElementById('buggyCode').textContent = challenge.code;
+        document.getElementById('userCode').value = challenge.code;
+        
+        
+        // Set level badge
+        const levelBadge = document.getElementById('levelBadge');
+        levelBadge.textContent = challenge.level.toUpperCase();
+        levelBadge.className = `px-3 py-1 rounded-full text-sm font-bold ${getLevelColors(challenge.level)}`;
+        
+        // Start timer (hidden from user)
+        gameState.startTime = Date.now();
+        startProgressBar();
+        
+        // Re-highlight code
+        Prism.highlightElement(document.getElementById('buggyCode'));
+        
+    } catch (error) {
+        alert('Error starting game: ' + error.message);
+    }
+}
+
+function startProgressBar() {
+    const progressFill = document.getElementById('progressFill');
+    let progress = 0;
+    const timeLimit = gameState.challenge.time_limit;
+    const progressIncrement = 100 / timeLimit; // Progress per second based on time limit
+    
+    gameState.gameTimer = setInterval(() => {
+        progress += progressIncrement;
+        progressFill.style.width = progress + '%';
+        
+        if (progress >= 100) {
+            clearInterval(gameState.gameTimer);
+            timeUp();
+        }
+    }, 1000);
+}
+
+function getLevelColors(level) {
+    switch(level) {
+        case 'easy': return 'bg-green-100 text-green-800';
+        case 'medium': return 'bg-yellow-100 text-yellow-800';
+        case 'hard': return 'bg-red-100 text-red-800';
+        default: return 'bg-gray-100 text-gray-800';
+    }
+}
+
+async function submitFix() {
+    const userCode = document.getElementById('userCode').value;
+    const userTime = (Date.now() - gameState.startTime) / 1000;
+    
+    clearInterval(gameState.gameTimer);
+    
+    try {
+        const response = await fetch('/submit-fix', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                user_code: userCode,
+                level: gameState.selectedLevel,
+                language: gameState.selectedLanguage,
+                user_time: userTime,
+                challenge_id: gameState.challenge.challenge_id
+            })
+        });
+        
+        const result = await response.json();
+        showResults(result);
+        
+    } catch (error) {
+        alert('Error submitting fix: ' + error.message);
+    }
+}
+
+function timeUp() {
+    submitFix(); // Auto-submit when time is up
+}
+
+function giveUp() {
+    clearInterval(gameState.gameTimer);
+    
+    const result = {
+        winner: 'ai',
+        message: '🤖 AI WINS! You gave up. Better luck next time!',
+        is_correct: false,
+        user_time: gameState.challenge.time_limit,
+        ai_time: gameState.challenge.ai_time,
+        correct_fix: null,
+        bugs_found: gameState.challenge.bugs
+    };
+    
+    showResults(result);
+}
+
+function showResults(result) {
+    const resultContent = document.getElementById('resultContent');
+    
+    const winnerIcon = result.winner === 'human' ? '🎉' : '🤖';
+    const winnerColor = result.winner === 'human' ? 'text-green-600' : 'text-red-600';
+    
+    resultContent.innerHTML = `
+        <div class="text-6xl mb-4">${winnerIcon}</div>
+        <h2 class="text-3xl font-bold ${winnerColor} mb-4">${result.message}</h2>
+        
+        <div class="grid grid-cols-2 gap-4 mb-6 text-sm">
+            <div class="bg-blue-50 p-4 rounded-lg">
+                <div class="font-semibold text-blue-800">Your Time</div>
+                <div class="text-2xl font-bold text-blue-600">${result.user_time.toFixed(1)}s</div>
+            </div>
+            <div class="bg-purple-50 p-4 rounded-lg">
+                <div class="font-semibold text-purple-800">AI Time</div>
+                <div class="text-2xl font-bold text-purple-600">${result.ai_time.toFixed(1)}s</div>
+            </div>
+        </div>
+        
+        ${result.correct_fix ? `
+        <div class="text-left mb-4">
+            <h3 class="font-bold text-gray-800 mb-2">Correct Solution:</h3>
+            <div class="bg-gray-900 rounded-lg p-4 text-left">
+                <pre><code class="language-${gameState.selectedLanguage} text-sm text-white">${result.correct_fix}</code></pre>
+            </div>
+        </div>
+        ` : ''}
+        
+        <div class="text-left">
+            <h3 class="font-bold text-gray-800 mb-2">Bugs in the Code:</h3>
+            <ul class="text-sm text-gray-600 list-disc list-inside">
+                ${result.bugs_found.map(bug => `<li>${bug}</li>`).join('')}
+            </ul>
+        </div>
+    `;
+    
+    document.getElementById('resultsModal').classList.remove('hidden');
+    
+    // Re-highlight code in results
+    setTimeout(() => {
+        Prism.highlightAll();
+    }, 100);
+}
+
+function resetGame() {
+    // Reset game state
+    gameState = {
+        selectedLevel: null,
+        selectedLanguage: gameState.selectedLanguage,
+        startTime: null,
+        challenge: null,
+        gameTimer: null
+    };
+    
+    // Reset UI
+    document.getElementById('levelSelection').classList.remove('hidden');
+    document.getElementById('gameArea').classList.add('hidden');
+    document.getElementById('resultsModal').classList.add('hidden');
+    document.getElementById('startGameBtn').disabled = true;
+    document.getElementById('startGameBtn').textContent = 'Select a Level to Start';
+    document.getElementById('progressFill').style.width = '0%';
+    
+    // Clear selections
+    document.querySelectorAll('.level-card').forEach(c => c.classList.remove('ring-4', 'ring-blue-400'));
+}
+</script>
+{% endblock %}

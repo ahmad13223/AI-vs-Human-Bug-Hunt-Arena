@@ -1,0 +1,263 @@
+{% extends "base.html" %}
+
+{% block title %}How It Works - AI vs Human: Code Review Arena{% endblock %}
+
+{% block content %}
+<section class="py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-gray-800 mb-4">How It Works</h1>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                Understand the technology and methodology behind our AI vs Human code review comparison platform.
+            </p>
+        </div>
+
+        <!-- Architecture Overview -->
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">System Architecture</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-10 h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">Frontend</h3>
+                    <p class="text-sm text-gray-600">HTML, CSS (TailwindCSS), and vanilla JavaScript for the user interface</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h6l2 2h6a2 2 0 012 2v4a2 2 0 01-2 2H5z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">Backend</h3>
+                    <p class="text-sm text-gray-600">Python Flask framework handling API requests and review generation</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-10 h-10 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">AI Logic</h3>
+                    <p class="text-sm text-gray-600">Pattern-based analysis simulating AI code review capabilities</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Process Flow -->
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-8 text-center">Review Process Flow</h2>
+            <div class="space-y-8">
+                <!-- Step 1 -->
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 w-10 h-10 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold mr-4">1</div>
+                    <div>
+                        <h3 class="font-semibold text-gray-800 mb-2">Code Submission</h3>
+                        <p class="text-gray-600 mb-3">User pastes their Python or JavaScript code into the web form and selects the programming language.</p>
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <code class="text-sm text-gray-700">POST /analyze → { "code": "...", "language": "python" }</code>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 w-10 h-10 bg-green-500 text-white rounded-full flex items-center justify-center font-bold mr-4">2</div>
+                    <div>
+                        <h3 class="font-semibold text-gray-800 mb-2">AI Analysis Engine</h3>
+                        <p class="text-gray-600 mb-3">Our Python backend analyzes the code using pattern matching and rule-based logic to simulate AI review capabilities.</p>
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <h4 class="font-medium text-gray-800 mb-2">AI Analysis Includes:</h4>
+                            <ul class="text-sm text-gray-600 space-y-1">
+                                <li>• Syntax and style checking</li>
+                                <li>• Security vulnerability detection</li>
+                                <li>• Performance optimization suggestions</li>
+                                <li>• Best practice validation</li>
+                                <li>• Code complexity analysis</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 w-10 h-10 bg-purple-500 text-white rounded-full flex items-center justify-center font-bold mr-4">3</div>
+                    <div>
+                        <h3 class="font-semibold text-gray-800 mb-2">Human Review Simulation</h3>
+                        <p class="text-gray-600 mb-3">Generates contextual insights that represent how a human reviewer would approach the same code.</p>
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <h4 class="font-medium text-gray-800 mb-2">Human Review Focuses On:</h4>
+                            <ul class="text-sm text-gray-600 space-y-1">
+                                <li>• Business logic validation</li>
+                                <li>• Architectural considerations</li>
+                                <li>• Maintainability and readability</li>
+                                <li>• Team conventions and standards</li>
+                                <li>• Strategic technical decisions</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 w-10 h-10 bg-orange-500 text-white rounded-full flex items-center justify-center font-bold mr-4">4</div>
+                    <div>
+                        <h3 class="font-semibold text-gray-800 mb-2">Results Presentation</h3>
+                        <p class="text-gray-600 mb-3">Both reviews are displayed side-by-side with syntax highlighting for easy comparison.</p>
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <code class="text-sm text-gray-700">Response → { "ai_review": {...}, "human_review": {...} }</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical Implementation -->
+        <div class="grid lg:grid-cols-2 gap-8 mb-12">
+            <!-- AI Review Logic -->
+            <div class="bg-white rounded-xl shadow-lg p-8">
+                <h3 class="text-xl font-bold text-gray-800 mb-4">AI Review Implementation</h3>
+                <p class="text-gray-600 mb-4">
+                    Our AI review simulation uses pattern matching and rule-based analysis to identify common code issues:
+                </p>
+                <div class="bg-gray-900 rounded-lg p-4 overflow-x-auto mb-4">
+                    <pre><code class="text-sm text-green-400">def generate_ai_review(code, language):
+    issues = []
+    suggestions = []
+    
+    # Pattern matching for common issues
+    if 'print(' in code:
+        issues.append("Consider using logging")
+    
+    if 'except:' in code:
+        issues.append("Avoid bare except clauses")
+    
+    return {
+        'issues': issues,
+        'suggestions': suggestions,
+        'positive': positive_points
+    }</code></pre>
+                </div>
+                <div class="space-y-2 text-sm">
+                    <h4 class="font-medium text-gray-800">Detection Methods:</h4>
+                    <ul class="text-gray-600 space-y-1">
+                        <li>• Regular expression pattern matching</li>
+                        <li>• String analysis for common anti-patterns</li>
+                        <li>• Code structure evaluation</li>
+                        <li>• Language-specific rule checking</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Human Review Logic -->
+            <div class="bg-white rounded-xl shadow-lg p-8">
+                <h3 class="text-xl font-bold text-gray-800 mb-4">Human Review Simulation</h3>
+                <p class="text-gray-600 mb-4">
+                    Human review simulation provides contextual insights based on common developer concerns:
+                </p>
+                <div class="bg-gray-900 rounded-lg p-4 overflow-x-auto mb-4">
+                    <pre><code class="text-sm text-green-400">def generate_human_review(code, language):
+    insights = [
+        "Consider the performance implications...",
+        "Think about maintainability...",
+        "How does this integrate with..."
+    ]
+    
+    return {
+        'insights': random.choice(insights),
+        'suggestions': contextual_suggestions,
+        'context': human_perspective
+    }</code></pre>
+                </div>
+                <div class="space-y-2 text-sm">
+                    <h4 class="font-medium text-gray-800">Human Perspective Includes:</h4>
+                    <ul class="text-gray-600 space-y-1">
+                        <li>• Contextual business considerations</li>
+                        <li>• Long-term maintainability thoughts</li>
+                        <li>• Team collaboration aspects</li>
+                        <li>• Strategic technical decisions</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technology Stack -->
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Technology Stack</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-orange-100 rounded-lg flex items-center justify-center mx-auto mb-3">
+                        <span class="text-2xl">🐍</span>
+                    </div>
+                    <h4 class="font-semibold text-gray-800">Python Flask</h4>
+                    <p class="text-sm text-gray-600">Backend API framework</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-3">
+                        <span class="text-2xl">🎨</span>
+                    </div>
+                    <h4 class="font-semibold text-gray-800">TailwindCSS</h4>
+                    <p class="text-sm text-gray-600">Utility-first CSS framework</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-yellow-100 rounded-lg flex items-center justify-center mx-auto mb-3">
+                        <span class="text-2xl">📝</span>
+                    </div>
+                    <h4 class="font-semibold text-gray-800">Prism.js</h4>
+                    <p class="text-sm text-gray-600">Syntax highlighting library</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-3">
+                        <span class="text-2xl">⚡</span>
+                    </div>
+                    <h4 class="font-semibold text-gray-800">Vanilla JS</h4>
+                    <p class="text-sm text-gray-600">Frontend interactivity</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Limitations & Future Enhancements -->
+        <div class="bg-gradient-to-r from-yellow-400 to-orange-500 rounded-xl shadow-lg p-8 text-white">
+            <h2 class="text-2xl font-bold mb-6 text-center">Current Limitations & Future Enhancements</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="font-semibold mb-4">⚠️ Current Limitations</h3>
+                    <ul class="space-y-2 text-sm opacity-90">
+                        <li>• Simulated AI logic (not actual ML models)</li>
+                        <li>• Limited to Python and JavaScript</li>
+                        <li>• Pattern-based analysis only</li>
+                        <li>• No persistent storage or user accounts</li>
+                        <li>• Basic syntax highlighting</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-4">🚀 Potential Enhancements</h3>
+                    <ul class="space-y-2 text-sm opacity-90">
+                        <li>• Integration with real AI models (GPT, CodeT5)</li>
+                        <li>• Support for more programming languages</li>
+                        <li>• Advanced static analysis tools</li>
+                        <li>• User accounts and review history</li>
+                        <li>• Real-time collaborative reviews</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="text-center mt-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Ready to Try It Out?</h2>
+            <p class="text-gray-600 mb-6">Now that you understand how it works, experience the difference yourself!</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="/review" class="bg-purple-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors">
+                    Try Code Review
+                </a>
+                <a href="/learn" class="border-2 border-purple-600 text-purple-600 px-8 py-3 rounded-lg font-semibold hover:bg-purple-600 hover:text-white transition-colors">
+                    Learn More
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

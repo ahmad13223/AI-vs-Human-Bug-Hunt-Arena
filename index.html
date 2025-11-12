@@ -1,0 +1,239 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="gradient-bg text-white py-24 relative overflow-hidden">
+    <div class="absolute inset-0 bg-black opacity-10"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+        <div class="mb-8 fade-in">
+            <span class="inline-block px-4 py-2 bg-white bg-opacity-20 rounded-full text-sm font-medium backdrop-blur-sm border border-white border-opacity-30 mb-6">
+                ⚡ Competitive Bug Hunting Game
+            </span>
+        </div>
+        <h1 class="text-6xl md:text-7xl font-bold mb-8 fade-in-delay leading-tight">
+            <span class="block">AI vs Human:</span>
+            <span class="block text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-purple-100">
+                Bug Hunt Arena
+            </span>
+        </h1>
+        <p class="text-xl md:text-2xl mb-12 max-w-4xl mx-auto fade-in-delay-2 leading-relaxed text-blue-100">
+            🏆 **COMPETE AGAINST AI!** Find bugs faster than artificial intelligence! 
+            Race against time in this thrilling coding challenge where speed and accuracy determine the winner!
+        </p>
+        <div class="flex flex-col sm:flex-row gap-6 justify-center fade-in-delay-2">
+            <a href="/game" class="btn-primary text-white px-10 py-4 rounded-xl font-semibold text-lg shadow-2xl transform hover:scale-105 transition-all duration-300">
+                <span class="flex items-center justify-center space-x-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                    <span>Start Bug Hunt</span>
+                </span>
+            </a>
+            <a href="/learn" class="btn-secondary text-white px-10 py-4 rounded-xl font-semibold text-lg backdrop-blur-sm bg-white bg-opacity-10 hover:bg-opacity-20 transition-all duration-300 transform hover:scale-105">
+                <span class="flex items-center justify-center space-x-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                    <span>Learn the Differences</span>
+                </span>
+            </a>
+        </div>
+    </div>
+    
+    <!-- Floating elements for visual appeal -->
+    <div class="absolute top-20 left-10 w-20 h-20 bg-white bg-opacity-10 rounded-full floating" style="animation-delay: 0s;"></div>
+    <div class="absolute top-40 right-20 w-16 h-16 bg-blue-300 bg-opacity-20 rounded-full floating" style="animation-delay: 1s;"></div>
+    <div class="absolute bottom-20 left-1/4 w-12 h-12 bg-purple-300 bg-opacity-20 rounded-full floating" style="animation-delay: 2s;"></div>
+    <div class="absolute bottom-40 right-1/3 w-8 h-8 bg-pink-300 bg-opacity-20 rounded-full floating" style="animation-delay: 0.5s;"></div>
+</section>
+
+<!-- Introduction Section -->
+<section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">Why Compare AI and Human Code Reviews?</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                Understanding the strengths and limitations of both AI and human code reviewers helps developers 
+                make better decisions about code quality, team processes, and tool adoption.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-16">
+            <!-- AI Review Card -->
+            <div class="glass-card rounded-2xl shadow-professional-lg p-8 card-hover border border-blue-100">
+                <div class="flex items-center mb-6">
+                    <div class="w-16 h-16 bg-gradient-to-br from-slate-700 via-blue-600 to-indigo-600 rounded-2xl flex items-center justify-center mr-4 shadow-lg floating">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-1">AI-Driven Reviews</h3>
+                        <span class="text-sm text-blue-700 font-medium bg-gradient-to-r from-blue-50 to-indigo-50 px-3 py-1 rounded-full">Lightning Fast</span>
+                    </div>
+                </div>
+                <p class="text-gray-600 mb-6 text-lg leading-relaxed">
+                    Lightning-fast analysis that catches syntax errors, security vulnerabilities, and coding standard violations 
+                    with consistent accuracy across large codebases.
+                </p>
+                <div class="space-y-3">
+                    <div class="flex items-center text-gray-700">
+                        <div class="w-2 h-2 bg-gradient-to-r from-slate-700 to-blue-600 rounded-full mr-3"></div>
+                        <span class="font-medium">Instant feedback and analysis</span>
+                    </div>
+                    <div class="flex items-center text-gray-700">
+                        <div class="w-2 h-2 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full mr-3"></div>
+                        <span class="font-medium">Pattern recognition and consistency</span>
+                    </div>
+                    <div class="flex items-center text-gray-700">
+                        <div class="w-2 h-2 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full mr-3"></div>
+                        <span class="font-medium">24/7 availability</span>
+                    </div>
+                    <div class="flex items-center text-gray-700">
+                        <div class="w-2 h-2 bg-gradient-to-r from-purple-600 to-violet-600 rounded-full mr-3"></div>
+                        <span class="font-medium">Scalable across teams</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Human Review Card -->
+            <div class="glass-card rounded-2xl shadow-professional-lg p-8 card-hover border border-purple-100">
+                <div class="flex items-center mb-6">
+                    <div class="w-16 h-16 bg-gradient-to-br from-indigo-600 via-purple-600 to-violet-600 rounded-2xl flex items-center justify-center mr-4 shadow-lg floating" style="animation-delay: 0.5s;">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-1">Human-Driven Reviews</h3>
+                        <span class="text-sm text-purple-700 font-medium bg-gradient-to-r from-purple-50 to-violet-50 px-3 py-1 rounded-full">Contextual Intelligence</span>
+                    </div>
+                </div>
+                <p class="text-gray-600 mb-6 text-lg leading-relaxed">
+                    Contextual understanding that considers business logic, user experience, maintainability, 
+                    and team dynamics beyond just technical correctness.
+                </p>
+                <div class="space-y-3">
+                    <div class="flex items-center text-gray-700">
+                        <div class="w-2 h-2 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full mr-3"></div>
+                        <span class="font-medium">Contextual and strategic thinking</span>
+                    </div>
+                    <div class="flex items-center text-gray-700">
+                        <div class="w-2 h-2 bg-gradient-to-r from-purple-600 to-violet-600 rounded-full mr-3"></div>
+                        <span class="font-medium">Business logic validation</span>
+                    </div>
+                    <div class="flex items-center text-gray-700">
+                        <div class="w-2 h-2 bg-gradient-to-r from-violet-600 to-slate-600 rounded-full mr-3"></div>
+                        <span class="font-medium">Mentoring and knowledge sharing</span>
+                    </div>
+                    <div class="flex items-center text-gray-700">
+                        <div class="w-2 h-2 bg-gradient-to-r from-slate-600 to-gray-600 rounded-full mr-3"></div>
+                        <span class="font-medium">Creative problem solving</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="glass-card rounded-2xl shadow-professional-lg p-10 border border-gray-100">
+            <div class="text-center mb-8">
+                <h3 class="text-3xl font-bold text-gradient mb-3">Performance Metrics</h3>
+                <p class="text-gray-600 text-lg">Real-world comparison data</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center group">
+                    <div class="w-20 h-20 bg-gradient-to-br from-cyan-500 via-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg floating">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <div class="text-4xl font-bold bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300">~2 seconds</div>
+                    <p class="text-gray-600 font-medium">Average AI review time</p>
+                    <div class="w-full bg-gray-200 rounded-full h-2 mt-3">
+                        <div class="bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-600 h-2 rounded-full" style="width: 95%"></div>
+                    </div>
+                </div>
+                <div class="text-center group">
+                    <div class="w-20 h-20 bg-gradient-to-br from-emerald-500 via-teal-500 to-cyan-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg floating" style="animation-delay: 0.3s;">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <div class="text-4xl font-bold bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300">~30 minutes</div>
+                    <p class="text-gray-600 font-medium">Average human review time</p>
+                    <div class="w-full bg-gray-200 rounded-full h-2 mt-3">
+                        <div class="bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-600 h-2 rounded-full" style="width: 75%"></div>
+                    </div>
+                </div>
+                <div class="text-center group">
+                    <div class="w-20 h-20 bg-gradient-to-br from-purple-500 via-pink-500 to-rose-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg floating" style="animation-delay: 0.6s;">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <div class="text-4xl font-bold bg-gradient-to-r from-purple-600 via-pink-600 to-rose-600 bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300">85%</div>
+                    <p class="text-gray-600 font-medium">Issues caught by both methods</p>
+                    <div class="w-full bg-gray-200 rounded-full h-2 mt-3">
+                        <div class="bg-gradient-to-r from-purple-500 via-pink-500 to-rose-600 h-2 rounded-full" style="width: 85%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="relative py-20 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50"></div>
+    <div class="absolute inset-0 bg-white bg-opacity-60"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+        <div class="mb-8">
+            <span class="inline-block px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full text-sm font-medium mb-6">
+                🎯 Start Your Journey
+            </span>
+        </div>
+        <h2 class="text-4xl md:text-5xl font-bold text-gradient mb-6 leading-tight">
+            Ready to Experience the Difference?
+        </h2>
+        <p class="text-xl text-gray-600 mb-10 max-w-3xl mx-auto leading-relaxed">
+            Submit your own code and see how AI and human reviewers analyze it differently. 
+            Gain valuable insights into both approaches and revolutionize your code review process.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a href="/review" class="btn-primary text-white px-10 py-4 rounded-xl font-semibold text-lg shadow-2xl transform hover:scale-105 transition-all duration-300 inline-flex items-center space-x-3">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <span>Start Code Review Comparison</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                </svg>
+            </a>
+            <div class="flex items-center space-x-4 text-sm text-gray-500">
+                <div class="flex items-center space-x-1">
+                    <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span>Free to use</span>
+                </div>
+                <div class="flex items-center space-x-1">
+                    <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span>No signup required</span>
+                </div>
+                <div class="flex items-center space-x-1">
+                    <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span>Instant results</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Decorative elements -->
+    <div class="absolute top-10 left-10 w-32 h-32 bg-gradient-to-br from-blue-400 to-purple-400 rounded-full opacity-10 floating"></div>
+    <div class="absolute bottom-10 right-10 w-24 h-24 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full opacity-10 floating" style="animation-delay: 1s;"></div>
+</section>
+{% endblock %}
